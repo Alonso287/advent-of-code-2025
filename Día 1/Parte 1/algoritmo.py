@@ -15,7 +15,7 @@ queda en la posición 0.
 def main():
     posicion = 50                                          # Estado inicial del dial
     contraseña = 0
-    with open(r"Día 1\Parte 1\entrada.txt", "r") as entrada:    # Abre el archivo con las instrucciones
+    with open(r"Día 1\entrada.txt", "r") as entrada:    # Abre el archivo con las instrucciones
         instrucciones = entrada.readlines()             # Carga todas las líneas de entrada.txt
         for instruccion in instrucciones:
             posicion += calcular_pasos(instruccion)        # Calcula hacia dónde tiene que mover el dial

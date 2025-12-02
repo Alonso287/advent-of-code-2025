@@ -10,7 +10,7 @@ cada vez que el dial pase por la posición 0, aunque no se detenga allí.
 def main():
     posicion = 50                                               # Estado inicial del dial
     contraseña = 0
-    with open(r"Día 1\Parte 1\entrada.txt") as entrada:    # Abre el archivo con las instrucciones
+    with open(r"Día 1\entrada.txt", "r") as entrada:    # Abre el archivo con las instrucciones
         instrucciones = entrada.readlines()                     # Carga todas las líneas de entrada.txt
         for instruccion in instrucciones:
             pasos = calcular_pasos(instruccion)
