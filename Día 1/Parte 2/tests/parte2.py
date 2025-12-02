@@ -1,4 +1,4 @@
-def part2(posicion=0, pasos=0):
+def calcular_veces_por_0(posicion, pasos):
 
     if pasos >= 0:
         return abs(pasos + posicion) // 100
@@ -11,10 +11,3 @@ def part2(posicion=0, pasos=0):
         return contraseña + 1
 
     return contraseña
-
-
-def main():
-    main()
-
-if __name__ == "__main__":
-    main()
