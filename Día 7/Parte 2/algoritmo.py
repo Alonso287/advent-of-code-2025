@@ -3,7 +3,7 @@ with open(r"Día 7\entrada.txt") as entrada:
 
 rayo_inicial = mapa[0].index("S")
 
-rayos = [rayo_inicial]
+rayos = [1 if c == "S" else 0 for c in list(mapa)[0]]
 
 def buscar_separadores(linea):
     indices = []
@@ -12,15 +12,14 @@ def buscar_separadores(linea):
             indices.append(i)
     return indices
 
-suma = 0
+mapa = [linea for linea in mapa if buscar_separadores(linea) != []]
 
+total = 0
 for linea in mapa:
     for separador in buscar_separadores(linea):
-        if separador in rayos:
-            rayos.remove(separador)
-            rayos.append(separador - 1)
-            rayos.append(separador + 1)
-            rayos = list(set(rayos))
-            print(len(rayos))
+        rayos[separador - 1] += rayos[separador]
+        rayos[separador + 1] += rayos[separador]
+        rayos[separador] = 0
+        total = sum(rayos)
 
-print(suma)
+print(total)

@@ -1,42 +1,34 @@
-def main():
-    suma = 0
-    with open(r"Día 3\entrada.txt") as entrada:
-        baterías = entrada.readlines()
-        n = 0
-        for batería in baterías:
-            max = calcular_maximo(batería)
-            suma += max
-            n += 1
-            print(len(str(max)))
-            print(f"{n}/{len(baterías)}")
-    print(suma)
+numero = 811111111111119
+numero = str(numero)
 
+max = ""
+digito_max = -1
 
-def calcular_maximo(número):
-    número = list(número)
-    número_copia = número.copy()
-    máximo = 0
+while len(max) != 12:
 
-    for i in range (len(número)):
-        for j in range(len(número)-1):
-            for k in range(len(número)-2):
-                número_copia.pop(i)
-                número_copia.pop(j)
-                número_copia.pop(k)
-                if int("".join(número_copia)) > máximo:
-                    máximo = int("".join(número_copia))
-                número_copia = número.copy()
-    return máximo
+    numero2 = numero[digito_max+1:-(11-len(max))]
 
-número = 811111111111119
+    if len(numero2) + len(max) == 12:
+        max = max + numero2
+        break
 
-número = [int(n) for n in list(str(número))]
+    # Lista de los dígitos que se pueden escoger, de menor a mayor
+    digitos_ordenados = numero2
+    digitos_ordenados = list(digitos_ordenados)
+    digitos_ordenados = [int(n) for n in digitos_ordenados]
+    digitos_ordenados = sorted(digitos_ordenados)
+    digitos_ordenados.reverse()
+    digitos_ordenados = [str(n) for n in digitos_ordenados]
 
-número_ordenado = número.copy()
-número_ordenado = sorted(número_ordenado)
-número_ordenado.reverse()
+    print(numero2)
+    print(digitos_ordenados)
 
+    # Busca el mayor número posible que se pueda escoger, lo más cerca posible del inicio de la cadena
+    digito_max = numero.index(digitos_ordenados[0])
 
+    print(numero[digito_max])
 
-""" if __name__ == "__main__":
-    main() """
+    #añade al número definitivo el dígito que hemos encontrado
+    max = max + numero[digito_max]
+
+print(max)
